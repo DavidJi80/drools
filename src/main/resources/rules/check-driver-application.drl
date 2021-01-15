@@ -1,0 +1,18 @@
+import com.benetech.demo.drools.domain.driver.DriverApplicant
+import com.benetech.demo.drools.domain.driver.Application
+
+rule "Driver Is of valid age"
+when
+  $driver : DriverApplicant(age < 18)
+  $a : Application()
+then
+  $driver.setName("Mr John Smith");
+  $a.setValid(false);
+end
+
+rule "Application was made this year"
+when
+  $a : Application(dateApplied > "01-jan-2009")
+then
+  $a.setValid(false);
+end
