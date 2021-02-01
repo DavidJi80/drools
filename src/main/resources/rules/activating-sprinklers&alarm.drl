@@ -1,6 +1,7 @@
 import com.benetech.demo.drools.domain.firealarm.Fire
 import com.benetech.demo.drools.domain.firealarm.Sprinkler
 import com.benetech.demo.drools.domain.firealarm.Alarm
+import com.benetech.demo.drools.domain.firealarm.Room
 
 rule "When there is a fire turn on the sprinkler"
 when
@@ -32,6 +33,7 @@ rule "Status output when things are ok"
 when
     not Alarm()
     not Sprinkler( on == true )
+    exists Room()
 then
     System.out.println( "Everything is ok" );
 end

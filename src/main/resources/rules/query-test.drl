@@ -1,0 +1,10 @@
+package rules;
+dialect  "mvel"
+
+import com.benetech.demo.drools.domain.testquery.Person
+
+query "people under the age of 21"
+    $person21 : Person( age < 21 )
+end
+
+

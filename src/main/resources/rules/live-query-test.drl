@@ -1,0 +1,13 @@
+package rules;
+dialect  "mvel"
+
+import com.benetech.demo.drools.domain.testquery.TShirt
+
+query colors(String $color1, String $color2)
+    TShirt(mainColor == $color1, secondColor == $color2, $price: manufactureCost)
+end
+
+rule "live-query-test"
+    when
+    then
+end

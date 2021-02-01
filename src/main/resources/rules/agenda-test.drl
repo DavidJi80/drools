@@ -1,0 +1,28 @@
+package rules;
+dialect  "mvel"
+
+import com.benetech.demo.drools.domain.bank.AccountPeriod
+import com.benetech.demo.drools.domain.bank.Account
+import com.benetech.demo.drools.domain.bank.CashFlow
+
+rule "Increase balance for credits"
+  agenda-group "calculation"
+when
+  $ap : AccountPeriod()
+  $acc : Account($accountNo : accountNo)
+  CashFlow( accountNo == $accountNo,
+            date >= $ap.start && <= $ap.getEnd(),
+            $amount : amount )
+then
+  $acc.balance  += $amount;
+  System.out.println("Increase Account : " + $acc);
+end
+
+rule "Print balance for AccountPeriod"
+  agenda-group "report"
+when
+  $ap : AccountPeriod()
+  $acc : Account()
+then
+  System.out.println("Account : " + $acc);
+end
