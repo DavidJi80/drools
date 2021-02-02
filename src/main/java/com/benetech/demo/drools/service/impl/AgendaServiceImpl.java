@@ -3,17 +3,16 @@ package com.benetech.demo.drools.service.impl;
 import com.benetech.demo.drools.domain.bank.Account;
 import com.benetech.demo.drools.domain.bank.AccountPeriod;
 import com.benetech.demo.drools.domain.bank.CashFlow;
+import com.benetech.demo.drools.domain.testquery.Person;
 import com.benetech.demo.drools.service.AgendaService;
 import lombok.extern.slf4j.Slf4j;
 import org.kie.api.cdi.KSession;
 import org.kie.api.runtime.KieSession;
 import org.kie.api.runtime.rule.Agenda;
 import org.springframework.stereotype.Service;
-
 import javax.annotation.Resource;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 /**
@@ -54,5 +53,14 @@ public class AgendaServiceImpl implements AgendaService {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public void testActivationGroup() {
+        Person person1=new Person("David",46);
+        Person person2=new Person("Tom",89);
+        ksession.insert(person1);
+        ksession.insert(person2);
+        ksession.fireAllRules();
     }
 }

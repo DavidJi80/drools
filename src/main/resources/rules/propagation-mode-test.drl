@@ -1,0 +1,16 @@
+package rules;
+dialect  "mvel"
+
+query Q (Integer i)
+    String( this == i.toString() )
+end
+
+rule "Rule" @Propagation(IMMEDIATE)
+//  enabled false
+  date-effective "4-Sep-2118"
+  when
+    $i : Integer()
+    ?Q( $i; )
+  then
+    System.out.println( $i );
+end

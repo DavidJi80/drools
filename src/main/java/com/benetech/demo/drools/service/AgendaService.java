@@ -9,4 +9,5 @@ import java.text.ParseException;
  */
 public interface AgendaService {
     void testAgenda();
+    void testActivationGroup();
 }

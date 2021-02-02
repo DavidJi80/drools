@@ -1,0 +1,20 @@
+package rules;
+dialect  "mvel"
+
+import com.benetech.demo.drools.domain.testquery.Person
+
+rule "Print age > 40"
+activation-group "report"
+    when
+        $person:Person(age>=40)
+    then
+        System.out.println("Person Age > 40 : "+$person);
+end
+
+rule "Print age > 45"
+activation-group "report"
+    when
+        $person:Person(age>=45)
+    then
+        System.out.println("Person Age > 45 : "+$person);
+end

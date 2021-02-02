@@ -22,4 +22,10 @@ public class AgendaController {
         agendaService.testAgenda();
         return "Test Agenda";
     }
+
+    @GetMapping("/activation_group")
+    public String testActivationGroup(){
+        agendaService.testActivationGroup();
+        return "Test Activation Group";
+    }
 }

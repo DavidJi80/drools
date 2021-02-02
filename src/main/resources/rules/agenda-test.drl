@@ -24,5 +24,13 @@ when
   $ap : AccountPeriod()
   $acc : Account()
 then
-  System.out.println("Account : " + $acc);
+  System.out.println("Report Account : " + $acc);
+end
+
+rule "No agenda-group Print balance"
+when
+  $ap : AccountPeriod()
+  $acc : Account()
+then
+  System.out.println("No agenda-group  Account : " + $acc);
 end
