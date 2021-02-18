@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<kmodule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xmlns="http://www.drools.org/xsd/kmodule">
+<kmodule xmlns="http://www.drools.org/xsd/kmodule">
     <kbase name="rules" packages="rules" default="false" scope="singleton" eventProcessingMode="stream">
-        <ksession name="ksession-rules" />
+        <ksession name="ksession-rules" type="stateful" scope="singleton" >
+            <consoleLogger/>
+            <!--<fileLogger file="E://logs/abc" name="fl_logger" interval="30" threaded="true"/>-->
+        </ksession>
     </kbase>
     <kbase name="statelessRules" packages="rules">
         <ksession name="stateless-rules" type="stateless" />
